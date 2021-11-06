@@ -15,9 +15,9 @@ public class PathSystemUpDoor : MonoBehaviour
     public int pathLength = 10;
     [Range(1.0f, 10.0f)]
     public float cellSize = 1.0f;
-
     public Transform startLocation;
 
+    [Space]
     public static System.Random r;
     public static int seed1=0, seed2=0, seed3=0, seed4=0;
     // Start is called before the first frame update
@@ -42,32 +42,7 @@ public class PathSystemUpDoor : MonoBehaviour
 
         random = new System.Random(seed1);
         Debug.Log(seed1 + " " + seed2 + " " + seed3 + " " + seed4);
-    }
 
-    void SetSeed()
-    {
-        if (seedType == SeedType.RANDOM)
-        {
-            r = new System.Random();
-            seed1 = r.Next(-1000000000, 1000000000);
-            seed2 = r.Next(-1000000000, 1000000000);
-            seed3 = r.Next(-1000000000, 1000000000);
-            seed4 = r.Next(-1000000000, 1000000000);
-        }
-        else if (seedType == SeedType.CUSTOM)
-        {
-            r = new System.Random(seed);
-            seed1 = r.Next(-1000000000, 1000000000);
-            seed2 = r.Next(-1000000000, 1000000000);
-            seed3 = r.Next(-1000000000, 1000000000);
-            seed4 = r.Next(-1000000000, 1000000000);
-        }
-
-        random = new System.Random(seed1);
-        Debug.Log(seed1 + " " + seed2 + " " + seed3 + " " + seed4);
-    }
-    void CreatePath()
-    {
 
         gridCellList.Clear();
         Vector2 currentPosition = startLocation.transform.position;
@@ -89,7 +64,8 @@ public class PathSystemUpDoor : MonoBehaviour
                 currentPosition = new Vector2(currentPosition.x + cellSize, currentPosition.y);
                 gridCellList.Add(new RoomGridCell(currentPosition));
                 currentPosition = new Vector2(currentPosition.x + cellSize, currentPosition.y);
-            }else
+            }
+            else
             {
                 currentPosition = new Vector2(currentPosition.x, currentPosition.y - cellSize);
             }
@@ -113,12 +89,7 @@ public class PathSystemUpDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetSeed();
 
-            CreatePath();
-        }
     }
 }
 

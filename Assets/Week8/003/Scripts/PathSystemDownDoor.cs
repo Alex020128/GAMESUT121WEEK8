@@ -22,15 +22,6 @@ public class PathSystemDownDoor : MonoBehaviour
     void Start()
     {
         random = new System.Random(PathSystemUpDoor.seed3);
-    }
-
-    void SetSeed()
-    {
-        random = new System.Random(PathSystemUpDoor.seed3);
-    }
-
-    void CreatePath()
-    {
 
         gridCellList.Clear();
         Vector2 currentPosition = startLocation.transform.position;
@@ -62,6 +53,7 @@ public class PathSystemDownDoor : MonoBehaviour
 
         }
     }
+
     private void OnDrawGizmos()
     {
         for (int i = 0; i < gridCellList.Count; i++)
@@ -76,11 +68,6 @@ public class PathSystemDownDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetSeed();
-
-            CreatePath();
-        }
+    
     }
 }

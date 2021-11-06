@@ -8,6 +8,9 @@ TagManager:
   - ClickButton
   - GridSystem
   - Rock
+  - Path
+  - Obstacle
+  - Mushroom
   layers:
   - Default
   - TransparentFX

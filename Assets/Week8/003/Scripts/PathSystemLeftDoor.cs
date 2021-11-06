@@ -21,24 +21,19 @@ public class PathSystemLeftDoor : MonoBehaviour {
     void Start() {
         
         random = new System.Random(PathSystemUpDoor.seed2);
-        
-    }
 
-    void SetSeed() {
-        random = new System.Random(PathSystemUpDoor.seed2);
-    }
-
-    void CreatePath() {
 
         gridCellList.Clear();
         Vector2 currentPosition = startLocation.transform.position;
         gridCellList.Add(new RoomGridCell(currentPosition));
 
-        for (int i = 0; i < pathLength; i++) {
+        for (int i = 0; i < pathLength; i++)
+        {
 
             int n = random.Next(90);
 
-            if (n.IsBetween(0, 29)) {
+            if (n.IsBetween(0, 29))
+            {
                 currentPosition = new Vector2(currentPosition.x + cellSize, currentPosition.y);
                 gridCellList.Add(new RoomGridCell(currentPosition));
                 currentPosition = new Vector2(currentPosition.x + cellSize, currentPosition.y);
@@ -55,7 +50,9 @@ public class PathSystemLeftDoor : MonoBehaviour {
             gridCellList.Add(new RoomGridCell(currentPosition));
 
         }
+
     }
+
     private void OnDrawGizmos() {
         for (int i = 0; i < gridCellList.Count; i++) {
             Gizmos.color = Color.white;
@@ -67,10 +64,6 @@ public class PathSystemLeftDoor : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            SetSeed();
 
-            CreatePath();
-        }
     }
 }
