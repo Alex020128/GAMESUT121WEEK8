@@ -11,7 +11,6 @@ public class CircleBuddy : MonoBehaviour {
     SpriteRenderer spriteRenderer;
 
     bool isActive;
-    float pauseTime = 1.0f;
 
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();

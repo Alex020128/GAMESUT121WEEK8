@@ -24,10 +24,6 @@ public class GridSystem : MonoBehaviour {
         DrawGrid();
         DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         random = new System.Random( (int)(DateTime.Now - epochStart).TotalSeconds);
-
-        for(int i = 0; i < spawnCount; i++) {
-            Instantiate(buddy, GetRandomLocation(), Quaternion.identity);
-        }
     }
 
     void DrawGrid() {
